@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+  <!-- ===== DATABASE CONFIGURATION ===== -->
+  <databases>
+    <staging_db>
+      <host>localhost</host>
+      <port>5432</port>
+      <name>staging</name>
+      <user>staging</user>
+      <password>sta12ging</password>
+    </staging_db>
+
+    <datawarehouse_db>
+      <host>localhost</host>
+      <port>5432</port>
+      <name>datawarehouse</name>
+      <user>dwhouse</user>
+      <password>dw123</password>
+    </datawarehouse_db>
+
+    <mart_db>
+      <host>localhost</host>
+      <port>5432</port>
+      <name>datamart</name>
+      <user>mart</user>
+      <password>m12art</password>
+    </mart_db>
+
+    <control_db>
+      <host>localhost</host>
+      <port>5432</port>
+      <name>control</name>
+      <user>control</user>
+      <password>c12on</password>
+    </control_db>
+  </databases>
+
+  <!-- ===== STORAGE PATHS ===== -->
+  <storage>
+    <raw_dir>/opt/shared/dw_project/data/raw</raw_dir>
+    <backup_dir>/opt/shared/dw_project/data/backup</backup_dir>
+  </storage>
+
+  <!-- ===== SCRAPER CONFIG ===== -->
+  <scraper>
+    <base_url>https://www.thegioididong.com/dtdd</base_url>
+    <rate_limit_ms>500</rate_limit_ms>
+    <user_agent>TeamDWBot/1.0 (+22130128@st.hcmuaf.edu.vn)</user_agent>
+    <csv_pattern>dtdt_%d_%m_%Y.csv</csv_pattern>
+  </scraper>
+
+  <!-- ===== EMAIL NOTIFICATION CONFIG ===== -->
+  <mail>
+    <to>22130128@st.hcmuaf.edu.vn</to>
+    <smtp_host>smtp.gmail.com</smtp_host>
+    <smtp_port>587</smtp_port>
+    <smtp_user>your_email@gmail.com</smtp_user>
+    <smtp_pass>your_app_password</smtp_pass>
+    <from>dw-system@example.com</from>
+  </mail>
+
+</config>
+

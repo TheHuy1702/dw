@@ -1,0 +1,59 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: dw_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./initdb:/docker-entrypoint-initdb.d:Z
+
+  n8n:
+    image: n8nio/n8n
+    container_name: dw_n8n
+    restart: always
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=admin123
+      - N8N_HOST=0.0.0.0
+      - N8N_PORT=5678
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=dw_postgres
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=control
+      - DB_POSTGRESDB_USER=control
+      - DB_POSTGRESDB_PASSWORD=c12on
+    depends_on:
+      - postgres
+
+  metabase:
+    image: metabase/metabase
+    container_name: dw_metabase
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      MB_DB_FILE: /metabase.db
+    depends_on:
+      - postgres
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 22130128@st.hcmuaf.edu.vn
+      PGADMIN_DEFAULT_PASSWORD: khuong@100
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+
