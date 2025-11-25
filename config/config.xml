@@ -39,7 +39,6 @@
   <!-- ===== STORAGE PATHS ===== -->
   <storage>
     <raw_dir>/opt/shared/dw_project/data/raw</raw_dir>
-    <backup_dir>/opt/shared/dw_project/data/backup</backup_dir>
   </storage>
 
   <!-- ===== SCRAPER CONFIG ===== -->
@@ -55,9 +54,9 @@
     <to>22130128@st.hcmuaf.edu.vn</to>
     <smtp_host>smtp.gmail.com</smtp_host>
     <smtp_port>587</smtp_port>
-    <smtp_user>your_email@gmail.com</smtp_user>
-    <smtp_pass>your_app_password</smtp_pass>
-    <from>dw-system@example.com</from>
+    <smtp_user>thehuy2201@gmail.com</smtp_user>
+    <smtp_pass>nljwlcreomvvvgme</smtp_pass>
+    <from>thehuy2201@gmail.com</from>
   </mail>
 
 </config>
